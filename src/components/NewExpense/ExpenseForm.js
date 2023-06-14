@@ -13,7 +13,6 @@ const ExpenseForm = () => {
   // });
   const titleChangeHandler = (e) => {
     setInteredTitle(e.target.value);
-    console.log(enteredTitle);
     // // setUserInput({ ...userInput, enteredTitle: e.target.value });
     // setUserInput((previousState) => {
     //   return { ...previousState, enteredTitle: e.target.value };
@@ -30,8 +29,23 @@ const ExpenseForm = () => {
     setInteredDate(e.target.value);
     // setUserInput({ ...userInput, enteredDate: event.target.value });
   };
+  const sibaByagiye = () => {
+    setInteredTitle("");
+    setInteredAmount("");
+    setInteredDate("");
+  };
+  const submitHandler = (event) => {
+    event.preventDefault();
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
+    console.log(expenseData);
+    sibaByagiye();
+  };
   return (
-    <form action="">
+    <form action="" onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label htmlFor="">Title</label>
