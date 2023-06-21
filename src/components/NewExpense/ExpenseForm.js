@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enteredTitle, setInteredTitle] = useState("");
   const [enteredAmount, setInteredAmount] = useState("");
   const [enteredDate, setInteredDate] = useState("");
@@ -31,7 +31,7 @@ const ExpenseForm = () => {
     setInteredDate(e.target.value);
     // setUserInput({ ...userInput, enteredDate: event.target.value });
   };
-  const sibaByagiye = () => {
+  const clearTheForm = () => {
     setInteredTitle("");
     setInteredAmount("");
     setInteredDate("");
@@ -43,8 +43,9 @@ const ExpenseForm = () => {
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
-    console.log(expenseData);
-    sibaByagiye();
+    // console.log(expenseData);
+    props.onSaveExepenseData(expenseData);
+    clearTheForm();
   };
   return (
     <>
